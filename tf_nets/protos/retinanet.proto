@@ -1,5 +1,4 @@
 syntax = "proto2";
-
 package tf_nets.protos;
 
 message Retinanet {

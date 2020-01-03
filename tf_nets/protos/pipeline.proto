@@ -1,9 +1,7 @@
 syntax = "proto2";
-
 package tf_nets.protos;
-
 import "tf_nets/protos/model.proto";
 
-message PiplineConfig {
+message PipelineConfig {
     optional DetectionModel model = 1;
 }
