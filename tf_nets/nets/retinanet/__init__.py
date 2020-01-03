@@ -1,3 +1,4 @@
+from tensorflow import keras
 
 def mobilenet_v1(num_classes, inputs, modifier = None):
 	from tensorflow.keras.applications import MobileNet

@@ -1,7 +1,15 @@
 syntax = "proto2";
 package tf_nets.protos;
 
+message AnchorParameters {
+  repeated int32 size = 1;
+  repeated int32 stride = 2;
+  repeated float ratio = 3;
+  repeated float scale = 4;
+}
+
 message Retinanet {
   optional string backbone = 1;
   optional int32 num_classes = 2;
+  optional AnchorParameters anchor_params = 3;
 }
