@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package tf_nets.protos;
+
+import "tf_nets/protos/retinanet.proto";
+
+message DetectionModel {
+	oneof model {
+		Retinanet retiannet = 1;
+	}
+}

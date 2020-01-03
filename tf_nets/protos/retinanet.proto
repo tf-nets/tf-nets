@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+package tf_nets.protos;
+
+message Retinanet {
+    optional int32 num_classes = 1;
+}
