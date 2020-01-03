@@ -1,2 +1,3 @@
 configs/*.config
 tf_nets/protos/*.py
+__pycache__
