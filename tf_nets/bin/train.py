@@ -1,6 +1,7 @@
 import tensorflow as tf
 from google.protobuf import text_format
 from tf_nets.protos import pipeline_pb2
+from tf_nets.builders import model_builder
 
 flags = tf.compat.v1.app.flags
 
@@ -26,4 +27,4 @@ if __name__ == '__main__':
 	pipeline_config = pipeline_pb2.PipelineConfig()
 	with tf.compat.v1.gfile.GFile(__FLAGS__.pipeline_config_path) as __file:
 		text_format.Merge(__file.read(), pipeline_config)
-	print(pipeline_config)
+	detection_model = model_builder.build(pipeline_config.model)

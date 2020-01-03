@@ -4,6 +4,6 @@ import "tf_nets/protos/retinanet.proto";
 
 message DetectionModel {
 	oneof model {
-		Retinanet retianet = 1;
+		Retinanet retinanet = 1;
 	}
 }
