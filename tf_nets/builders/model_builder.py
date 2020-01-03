@@ -10,11 +10,11 @@ def build_retinanet_model(config):
 		num_classes = config.num_classes,
 		inputs = inputs
 	)
-	
+
 	print(config)
 
 MATA_ARCH_BUILDER_MAP = {
-  'retinanet': build_retinanet_model
+	'retinanet': build_retinanet_model
 }
 def build(config):
 	meta_arch = config.WhichOneof('model')
