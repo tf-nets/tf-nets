@@ -27,4 +27,6 @@ if __name__ == '__main__':
 	pipeline_config = pipeline_pb2.PipelineConfig()
 	with tf.compat.v1.gfile.GFile(__FLAGS__.pipeline_config_path) as __file:
 		text_format.Merge(__file.read(), pipeline_config)
-	detection_model = model_builder.build(pipeline_config.model)
+	detection_model, baseline_model = model_builder.build(pipeline_config.model)
+	
+
