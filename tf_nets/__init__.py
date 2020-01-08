@@ -1,3 +1,4 @@
+import tensorflow as tf
 
 def bbox_transform(boxes, deltas, mean = None, std = None):
 	if mean is None:
