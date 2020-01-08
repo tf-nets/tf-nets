@@ -28,5 +28,3 @@ if __name__ == '__main__':
 	with tf.compat.v1.gfile.GFile(__FLAGS__.pipeline_config_path) as __file:
 		text_format.Merge(__file.read(), pipeline_config)
 	detection_model, baseline_model = model_builder.build(pipeline_config.model)
-	
-
