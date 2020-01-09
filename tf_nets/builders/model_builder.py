@@ -14,7 +14,7 @@ def detection_model_build(model, anchors, features, name = 'detection_model', **
 	detections = layers.FilterDetections(
 		name = 'filtered_detections',
 		**kwargs
-	)
+	)([boxes, classification] + others)
 	return keras.Model(inputs = model.inputs, outputs = detections, name = name)
 
 def build_retinanet_model(config):
@@ -79,8 +79,8 @@ def build_retinanet_model(config):
 		num_classes = config.num_classes,
 		inputs = inputs
 	)
-	anchors = anchor_builder.build(config.anchor_params)
-	num_anchors = anchors.num_anchors()
+	
+	num_anchors = anchor_builder.num_anchors(config.anchor_params)
 	submodels = [
 		('localization', build_retinanet_localization_model(4, num_anchors)),
 		('classification', build_retinanet_classification_model(config.num_classes, num_anchors))
@@ -89,6 +89,7 @@ def build_retinanet_model(config):
 	features = pyramid_builder.build_features(C3, C3, C5)
 	pyramids = pyramid_builder.build(submodels, features)
 	model = keras.Model(inputs = inputs, outputs = pyramids, name = backbone.name)
+	anchors = anchor_builder.build(config.anchor_params, features)
 	return detection_model_build(model, anchors = anchors, features = features), model
 
 MATA_ARCH_BUILDER_MAP = {

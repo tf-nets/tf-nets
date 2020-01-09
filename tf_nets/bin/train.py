@@ -28,3 +28,9 @@ if __name__ == '__main__':
 	with tf.compat.v1.gfile.GFile(__FLAGS__.pipeline_config_path) as __file:
 		text_format.Merge(__file.read(), pipeline_config)
 	detection_model, baseline_model = model_builder.build(pipeline_config.model)
+	baseline_model.compile(
+		loss = {'localization': tf_nets.losses.smooth_l1(), 'classification': tf_nets.losses.focal()},
+		optimizer = tf.keras.optimizers.Adam(lr = 1e-5, clipnorm=0.001)
+	)
+	
+	

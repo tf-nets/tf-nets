@@ -10,6 +10,6 @@ message AnchorParameters {
 
 message Retinanet {
   optional string backbone = 1;
-  optional int32 num_classes = 2;
+  optional int32 num_classes = 2 [default = 10];
   optional AnchorParameters anchor_params = 3;
 }
